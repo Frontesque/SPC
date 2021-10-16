@@ -7,6 +7,9 @@ require('colors');
 const proxyFile = fs.readFileSync('proxies.txt', 'utf8');
 const proxies = proxyFile.split('\r\n')
 
+if (fs.existsSync('workingProxies.txt')) fs.renameSync('workingProxies.txt','workingProxies.txt.old');
+
+
 //---   Make Requests Per Proxy   ---//
 for (const i in proxies) {
     const proxy = proxies[i];
