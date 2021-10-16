@@ -24,7 +24,7 @@ const proxies = proxyFile.split('\r\n');
             await page.goto('https://wtfismyip.com/text', { waitUntil: 'networkidle0' });
 
             const data = await page.evaluate(() => document.querySelector('*').outerHTML);
-            console.log("Proxy Success:".bold.green,data.split(';">')[1].split('</')[0]);
+            console.log("Proxy Success:".bold.green,data.split(';">')[1].split('\n</')[0]);
 
             await browser.close();
 
