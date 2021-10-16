@@ -11,23 +11,20 @@ const proxies = proxyFile.split('\r\n')
 for (const i in proxies) {
     const proxy = proxies[i];
 
-    console.log("Attempting Proxy:".bold.magenta,proxy)
+    //console.log("Attempting Proxy:".bold.magenta,proxy)
 
-    try {
-        request({
-            'url':'https://api.ipify.org?format=json',
-            'method': "GET",
-            'proxy': 'http://'+proxy,
-        },function (error, response, body) {
-            if (!error && response.statusCode == 200) {
-                console.log('Proxy Success:'.bold.green,proxy);
-            } else {
-                console.log('Proxy Fail:'.bold.red,proxy);
-            }
-        })
-    } catch {
-        console.log('Proxy Hard Fail:'.bold.red,proxy);
-    }
+    request({
+        'url':'https://api.ipify.org?format=json',
+        'method': "GET",
+        'proxy': 'http://'+proxy,
+    }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log('Proxy Success:'.bold.green,proxy);
+            fs.appendFileSync('workingProxies.txt', `${proxy}\n`)
+        } else {
+            console.log('Proxy Fail:'.bold.red,proxy);
+        }
+    })
 
 
 }
