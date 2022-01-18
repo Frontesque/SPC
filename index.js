@@ -4,6 +4,8 @@ const fs = require('fs');
 require('colors');
 
 //---   Proxy Imports   ---//
+if(!fs.existsSync('./proxies.txt')){ console.log('Unable to load "proxies.txt"'.bold.yellow); return; };
+
 const proxyFile = fs.readFileSync('proxies.txt', 'utf8');
 const proxies = proxyFile.split('\r\n')
 
@@ -20,12 +22,12 @@ for (const i in proxies) {
         'method': "GET",
         'proxy': 'http://'+proxy,
     }, function (error, response, body) {
+		const responseTime =  Date.now() - startTime;
         if (!error && response.statusCode == 200) {
-			const responseTime =  Date.now() - startTime;
             console.log('Proxy Success:'.bold.green,proxy,`(${responseTime}ms)`.magenta);
             fs.appendFileSync('workingProxies.txt', `${proxy}\r\n`)
         } else {
-            console.log('Proxy Fail:'.bold.red,proxy);
+            console.log('Proxy Fail:'.bold.red,proxy,`(${responseTime}ms)`.magenta);
         }
     })
 
