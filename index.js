@@ -5,8 +5,16 @@ require('colors');
 
 console.log("Starting SPS v1.2 by Front#2990".bold.blue);
 
+//---   Functions   ---//
+function hang() { //Holds Output
+	console.log("Exiting...".bold.red);
+	setTimeout(() => {
+		return;
+	}, 10000);
+}
+
 //---   Proxy Imports   ---//
-if(!fs.existsSync('./proxies.txt')){ console.log('Unable to load "proxies.txt"'.bold.yellow); return; };
+if(!fs.existsSync('./proxies.txt')){ console.log('Unable to load "proxies.txt"'.bold.yellow); hang(); return; };
 
 const proxyFile = fs.readFileSync('proxies.txt', 'utf8');
 const proxies = proxyFile.split('\r\n')

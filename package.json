@@ -1,6 +1,6 @@
 {
   "name": "tiktok-view-bot",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "simple view bot for tiktok",
   "main": "index.js",
   "scripts": {
