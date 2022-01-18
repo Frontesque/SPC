@@ -13,8 +13,7 @@ if (fs.existsSync('workingProxies.txt')) fs.renameSync('workingProxies.txt','wor
 //---   Make Requests Per Proxy   ---//
 for (const i in proxies) {
     const proxy = proxies[i];
-
-    //console.log("Attempting Proxy:".bold.magenta,proxy)
+	const startTime = Date.now();
 
     request({
         'url':'https://api.ipify.org?format=json',
@@ -22,8 +21,9 @@ for (const i in proxies) {
         'proxy': 'http://'+proxy,
     }, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            console.log('Proxy Success:'.bold.green,proxy);
-            fs.appendFileSync('workingProxies.txt', `${proxy}\n`)
+			const responseTime =  Date.now() - startTime;
+            console.log('Proxy Success:'.bold.green,proxy,`(${responseTime}ms)`.magenta);
+            fs.appendFileSync('workingProxies.txt', `${proxy}\r\n`)
         } else {
             console.log('Proxy Fail:'.bold.red,proxy);
         }
