@@ -18,7 +18,7 @@ const proxies = proxyFile.split('\r\n');
         try {
             browser = await puppeteer.launch({
                 headless: false,
-                args: [ '--proxy-server=186.125.59.8:46316' ]
+                args: [ '--proxy-server='+proxy ]
             });
             const page = await browser.newPage();
             await page.goto('https://wtfismyip.com/text', { waitUntil: 'networkidle0' });
