@@ -3,6 +3,8 @@ const request = require('request');
 const fs = require('fs');
 require('colors');
 
+console.log("Starting SPS v1.2 by Front#2990".bold.blue);
+
 //---   Proxy Imports   ---//
 if(!fs.existsSync('./proxies.txt')){ console.log('Unable to load "proxies.txt"'.bold.yellow); return; };
 
