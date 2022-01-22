@@ -17,3 +17,4 @@
 ### How to use
 1. Create a file called "proxies.txt"
 2. Insert proxies with one proxy per line WINDOWS FORMAT (\r\n)
+3. Run the executable for your platform in the same directory as "proxies.txt"
