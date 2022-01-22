@@ -1,13 +1,6 @@
 # Simple Proxy Checker
 
 
-**Table of Contents**
-
-[TOCM]
-
-[TOC]
-
-
 ### Features
 - Check your proxies to ensure that they're working
 - Export proxies to "workingProxies.txt"
