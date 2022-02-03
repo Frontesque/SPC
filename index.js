@@ -17,7 +17,7 @@ function hang() { //Holds Output
 if(!fs.existsSync('./proxies.txt')){ console.log('Unable to load "proxies.txt"'.bold.yellow); hang(); return; };
 
 const proxyFile = fs.readFileSync('proxies.txt', 'utf8');
-const proxies = proxyFile.split('\r\n')
+const proxies = proxyFile.split(/\r?\n/);
 
 if (fs.existsSync('workingProxies.txt')) fs.renameSync('workingProxies.txt','workingProxies.txt.old');
 
